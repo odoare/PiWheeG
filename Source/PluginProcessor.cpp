@@ -1,11 +1,3 @@
-/*
-  ==============================================================================
-
-    This file contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
-*/
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -131,31 +123,10 @@ bool PitchBendGateAudioProcessor::isBusesLayoutSupported (const BusesLayout& lay
 
 void PitchBendGateAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-    juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
-
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
-
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
-
-        // ..do something to the data...
-    }
+    pitchBendProcessor.process(midiMessages,
+                                apvts.getRawParameterValue("Gate negative value")->load(),
+                                apvts.getRawParameterValue("Gate positive value")->load());
+    //pitchBendProcessor.process(midiMessages, apvts.getRawParameterValue("Gate positive value")->load());
 }
 
 //==============================================================================
@@ -167,20 +138,23 @@ bool PitchBendGateAudioProcessor::hasEditor() const
 juce::AudioProcessorEditor* PitchBendGateAudioProcessor::createEditor()
 {
     return new PitchBendGateAudioProcessorEditor (*this);
+    //return new juce::GenericAudioProcessorEditor(*this);
 }
 
 //==============================================================================
 void PitchBendGateAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    juce::MemoryOutputStream mos(destData, true);
+    apvts.state.writeToStream(mos);
 }
 
 void PitchBendGateAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    auto tree = juce::ValueTree::readFromData(data,sizeInBytes);
+    if (tree.isValid())
+    {
+        apvts.replaceState(tree);
+    }
 }
 
 //==============================================================================
@@ -188,4 +162,12 @@ void PitchBendGateAudioProcessor::setStateInformation (const void* data, int siz
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new PitchBendGateAudioProcessor();
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout PitchBendGateAudioProcessor::createParameters()
+{
+    juce::AudioProcessorValueTreeState::ParameterLayout layout;
+    layout.add(std::make_unique<juce::AudioParameterInt>("Gate positive value","Gate positive value",0,8192,0));
+    layout.add(std::make_unique<juce::AudioParameterInt>("Gate negative value","Gate negative value",-8192,0,0));
+    return layout;
 }

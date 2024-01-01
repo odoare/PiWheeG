@@ -29,5 +29,15 @@ private:
     // access the processor object that created it.
     PitchBendGateAudioProcessor& audioProcessor;
 
+    juce::Slider gatePositiveValue;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gatePositiveValueAttachment;
+    juce::Label gatePositiveValueLabel{"gatePositiveValueLabel", "Gate positive value"};
+
+    juce::Slider gateNegativeValue;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gateNegativeValueAttachment;
+    juce::Label gateNegativeValueLabel{"gateNegativeValueLabel", "Gate negative value"};
+
+    juce::Image logo;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchBendGateAudioProcessorEditor)
 };
