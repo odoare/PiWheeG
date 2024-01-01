@@ -62,7 +62,8 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     auto length = diagonale.getDistanceFromOrigin();
     auto perpendicular = diagonale.rotatedAboutOrigin (juce::degreesToRadians (90.0f)) / length;
     auto height = float (getWidth() * getHeight()) / length;
-    auto bluegreengrey = juce::Colour::fromFloatRGBA(0.17f,0.22f,0.27f,1.0f);
+    //auto bluegreengrey = juce::Colour::fromFloatRGBA(0.17f,0.22f,0.27f,1.0f);
+    auto bluegreengrey = juce::Colour::fromFloatRGBA(0.15f, 0.15f, 0.25f, 1.0f);
     juce::ColourGradient grad (bluegreengrey.darker().darker().darker(), perpendicular * height,
                            bluegreengrey, perpendicular * -height, false);
     g.setGradientFill(grad);
@@ -79,10 +80,10 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     g.setFont(16);
     g.drawMultiLineText("v0.1", uxb+4*ux, uyb+3.4*uy, 2*ux, juce::Justification::centred);
 
-    g.setColour(juce::Colours::white);
+    g.setColour(juce::Colours::grey);
     g.setFont(14);
-    g.drawMultiLineText("Usage: All pitchbend values in the range defined by the left and right sliders are converted to the neutral value of 8192.",
-                          uxb+0.3*ux, uyb+2.3*uy, 3.5*ux, juce::Justification::horizontallyJustified);
+    g.drawMultiLineText("Usage: All pitchbend values the range defined by the left and right sliders are converted to the neutral value of 8192. Other values are remapped to fit in the range [0-16383]",
+                          uxb+0.3*ux, uyb+2*uy, 3.5*ux, juce::Justification::horizontallyJustified);
 }
 
 void PitchBendGateAudioProcessorEditor::resized()

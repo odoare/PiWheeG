@@ -27,13 +27,19 @@ public:
       auto msg = m.getMessage();
       if (msg.isPitchWheel())
       {
-        if ( (msg.getPitchWheelValue())<positiveValue && (msg.getPitchWheelValue())>negativeValue)
+        auto val = msg.getPitchWheelValue();
+        if ( val<positiveValue && val>negativeValue)
         {
           processedBuffer.addEvent(juce::MidiMessage::pitchWheel(msg.getChannel(),8192),m.samplePosition+1);
           //std::cout << "FILTER" << std::endl;
         }
         else
-          processedBuffer.addEvent(msg,m.samplePosition);
+        {
+          if (val>0)
+            processedBuffer.addEvent(juce::jmap<int>(val,positiveValue,16383,8192,16383),m.samplePosition+1);
+          else
+            processedBuffer.addEvent(juce::jmap<int>(val,0,negativeValue,0,8192),m.samplePosition+1);
+        }
       }
       else
         processedBuffer.addEvent(msg,m.samplePosition);
@@ -41,3 +47,4 @@ public:
     midiMessages.swapWith(processedBuffer);
   }
 };
+
