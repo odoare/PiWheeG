@@ -31,14 +31,14 @@ public:
         if ( val<positiveValue && val>negativeValue)
         {
           processedBuffer.addEvent(juce::MidiMessage::pitchWheel(msg.getChannel(),8192),m.samplePosition+1);
-          //std::cout << "FILTER" << std::endl;
+          std::cout << "FILTER" << std::endl;
         }
         else
         {
           if (val>0)
-            processedBuffer.addEvent(juce::jmap<int>(val,positiveValue,16383,8192,16383),m.samplePosition+1);
+            processedBuffer.addEvent(juce::jmap<int>(val,positiveValue,16383,8193,16383),m.samplePosition+1);
           else
-            processedBuffer.addEvent(juce::jmap<int>(val,0,negativeValue,0,8192),m.samplePosition+1);
+            processedBuffer.addEvent(juce::jmap<int>(val,0,negativeValue,0,8191),m.samplePosition+1);
         }
       }
       else
