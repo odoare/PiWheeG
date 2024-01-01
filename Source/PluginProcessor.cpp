@@ -167,7 +167,7 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 juce::AudioProcessorValueTreeState::ParameterLayout PitchBendGateAudioProcessor::createParameters()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
-    layout.add(std::make_unique<juce::AudioParameterInt>("Gate positive value","Gate positive value",0,8192,0));
-    layout.add(std::make_unique<juce::AudioParameterInt>("Gate negative value","Gate negative value",-8192,0,0));
+    layout.add(std::make_unique<juce::AudioParameterInt>("Gate positive value","Gate positive value",8192,16383,0));
+    layout.add(std::make_unique<juce::AudioParameterInt>("Gate negative value","Gate negative value",0,8192,0));
     return layout;
 }

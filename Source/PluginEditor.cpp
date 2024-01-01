@@ -41,7 +41,7 @@ PitchBendGateAudioProcessorEditor::PitchBendGateAudioProcessorEditor (PitchBendG
 
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize (400, 150);
+  setSize (400, 200);
 }
 
 PitchBendGateAudioProcessorEditor::~PitchBendGateAudioProcessorEditor()
@@ -56,7 +56,7 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     float uxb = border*getWidth();
     float uyb = border*getHeight();
     auto ux = (1-2*border)*getWidth()/8;
-    auto uy = (1-2*border)*getHeight()/3;
+    auto uy = (1-2*border)*getHeight()/4;
 
     auto diagonale = (getLocalBounds().getTopLeft() - getLocalBounds().getBottomRight()).toFloat();
     auto length = diagonale.getDistanceFromOrigin();
@@ -68,17 +68,21 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     g.setGradientFill(grad);
     g.fillAll();
 
-    auto r = juce::Rectangle<float>(uxb+6*ux,uyb+uy,2*ux,2*uy);
+    auto r = juce::Rectangle<float>(uxb+6*ux,uyb+1.8*uy,2*ux,2*uy);
     g.drawImage(logo, r);
 
     g.setColour(juce::Colours::grey);
     g.setFont(28);
-    g.drawMultiLineText("PBG", uxb+4*ux, uyb+2*uy, 2*ux, juce::Justification::centred);
-    g.setFont(12);
-    g.drawMultiLineText("Pitch Bend Gate", uxb+4*ux, uyb+2.3*uy, 2*ux, juce::Justification::centred);
+    g.drawMultiLineText("PBG", uxb+4*ux, uyb+2.8*uy, 2*ux, juce::Justification::centred);
+    g.setFont(14);
+    g.drawMultiLineText("Pitch Bend Gate", uxb+4*ux, uyb+3.1*uy, 2*ux, juce::Justification::centred);
     g.setFont(16);
-    g.drawMultiLineText("v0.1", uxb+4*ux, uyb+2.6*uy, 2*ux, juce::Justification::centred);
+    g.drawMultiLineText("v0.1", uxb+4*ux, uyb+3.4*uy, 2*ux, juce::Justification::centred);
 
+    g.setColour(juce::Colours::white);
+    g.setFont(14);
+    g.drawMultiLineText("Usage: All pitchbend values in the range defined by the left and right sliders are converted to the neutral value of 8192.",
+                          uxb+0.3*ux, uyb+2.3*uy, 3.5*ux, juce::Justification::horizontallyJustified);
 }
 
 void PitchBendGateAudioProcessorEditor::resized()
@@ -87,9 +91,9 @@ void PitchBendGateAudioProcessorEditor::resized()
     float uxb = border*getWidth();
     float uyb = border*getHeight();
     auto ux = (1-2*border)*getWidth()/8;
-    auto uy = (1-2*border)*getHeight()/3;
+    auto uy = (1-2*border)*getHeight()/4;
     
-    gateNegativeValue.setBounds(uxb,uyb,4*ux,uy);
-    gatePositiveValue.setBounds(uxb+4*ux,uyb,4*ux,uy);
+    gateNegativeValue.setBounds(uxb,uyb+0.5*uy,4*ux,uy);
+    gatePositiveValue.setBounds(uxb+4*ux,uyb+0.5*uy,4*ux,uy);
 
 }

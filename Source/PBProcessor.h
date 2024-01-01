@@ -27,7 +27,7 @@ public:
       auto msg = m.getMessage();
       if (msg.isPitchWheel())
       {
-        if ( (msg.getPitchWheelValue()-8192)<positiveValue && (msg.getPitchWheelValue()-8192)>negativeValue)
+        if ( (msg.getPitchWheelValue())<positiveValue && (msg.getPitchWheelValue())>negativeValue)
         {
           processedBuffer.addEvent(juce::MidiMessage::pitchWheel(msg.getChannel(),8192),m.samplePosition+1);
           //std::cout << "FILTER" << std::endl;
