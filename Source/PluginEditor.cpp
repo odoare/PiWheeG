@@ -13,7 +13,7 @@
 PitchBendGateAudioProcessorEditor::PitchBendGateAudioProcessorEditor (PitchBendGateAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-  logo = juce::ImageCache::getFromMemory(BinaryData::logo_png, BinaryData::logo_pngSize);
+  logo = juce::ImageCache::getFromMemory(BinaryData::logo686_png, BinaryData::logo686_pngSize);
 
   gateNegativeValue.setSliderStyle(juce::Slider::SliderStyle::LinearHorizontal);
   gateNegativeValue.setTextBoxStyle(juce::Slider::TextBoxBelow,true,100,20);

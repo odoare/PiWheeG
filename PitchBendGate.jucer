@@ -7,6 +7,7 @@
   <MAINGROUP id="M5INln" name="PitchBendGate">
     <GROUP id="{9E0317C4-52A9-41BA-A088-827ADB8A1B37}" name="Assets">
       <FILE id="BEovjW" name="logo.png" compile="0" resource="1" file="Source/Assets/logo.png"/>
+      <FILE id="ifQeb2" name="logo686.png" compile="0" resource="1" file="Source/Assets/logo686.png"/>
     </GROUP>
     <GROUP id="{8F3FE4E4-F289-0BBA-401F-795061C77DD6}" name="Source">
       <FILE id="F6lGRt" name="PBProcessor.h" compile="0" resource="0" file="Source/PBProcessor.h"/>
