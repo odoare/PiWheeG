@@ -69,7 +69,7 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     g.setGradientFill(grad);
     g.fillAll();
 
-    auto r = juce::Rectangle<float>(uxb+6*ux,uyb+1.8*uy,2*ux,2*uy);
+    auto r = juce::Rectangle<float>(uxb+6*ux,uyb+1.8*uy,2*ux,2*uy*227/269);
     g.drawImage(logo, r);
 
     g.setColour(juce::Colours::grey);
@@ -78,7 +78,7 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     g.setFont(14);
     g.drawMultiLineText("Pitch Bend Gate", uxb+4*ux, uyb+3.1*uy, 2*ux, juce::Justification::centred);
     g.setFont(16);
-    g.drawMultiLineText("v0.1", uxb+4*ux, uyb+3.4*uy, 2*ux, juce::Justification::centred);
+    g.drawMultiLineText("v0.01", uxb+4*ux, uyb+3.4*uy, 2*ux, juce::Justification::centred);
 
     g.setColour(juce::Colours::grey);
     g.setFont(14);
