@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="pEhJfF" name="PitchBendGate" projectType="audioplug" useAppConfig="0"
+<JUCERPROJECT id="pEhJfF" name="PiWheeG" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
               pluginFormats="buildVST,buildVST3" pluginCharacteristicsValue="pluginIsMidiEffectPlugin,pluginProducesMidiOut,pluginWantsMidiIn"
-              companyName="FX Mechanics" pluginManufacturerCode="FXME" pluginCode="PBGa"
+              companyName="FX Mechanics" pluginManufacturerCode="FXME" pluginCode="PIWG"
               companyWebsite="www.fx-mechanics.com" version="0.0.1" pluginVST3Category="Fx,Tools">
-  <MAINGROUP id="M5INln" name="PitchBendGate">
+  <MAINGROUP id="M5INln" name="PiWheeG">
     <GROUP id="{9E0317C4-52A9-41BA-A088-827ADB8A1B37}" name="Assets">
       <FILE id="BEovjW" name="logo.png" compile="0" resource="1" file="Source/Assets/logo.png"/>
       <FILE id="ifQeb2" name="logo686.png" compile="0" resource="1" file="Source/Assets/logo686.png"/>
