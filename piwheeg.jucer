@@ -40,7 +40,7 @@
   <EXPORTFORMATS>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="0" name="Release" targetName="PitchBendGate"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="PiWheeG"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/JUCE/modules"/>
@@ -59,7 +59,7 @@
     </LINUX_MAKE>
     <VS2022 targetFolder="Builds/VisualStudio2022" IPP1ALibrary="true" MKL1ALibrary="Sequential">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="0" name="Release" targetName="PitchBendGate"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="PiWheeG"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../JUCE/JUCE/modules"/>
