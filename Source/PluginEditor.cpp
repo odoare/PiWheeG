@@ -81,7 +81,7 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     g.setFont(14);
     g.drawMultiLineText("Pitch Wheel Gate", uxb+4*ux, uyb+2.7*uy, 2*ux, juce::Justification::centred);
     g.setFont(16);
-    g.drawMultiLineText("v0.0.1", uxb+4*ux, uyb+3.5*uy, 2*ux, juce::Justification::centred);
+    g.drawMultiLineText("v0.0.2", uxb+4*ux, uyb+3.5*uy, 2*ux, juce::Justification::centred);
 
     g.setColour(juce::Colours::grey);
     g.setFont(14);

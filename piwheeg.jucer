@@ -3,8 +3,8 @@
 <JUCERPROJECT id="pEhJfF" name="PiWheeG" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
               pluginFormats="buildVST3" pluginCharacteristicsValue="pluginIsMidiEffectPlugin,pluginProducesMidiOut,pluginWantsMidiIn"
-              companyName="FX Mechanics" pluginManufacturerCode="FXME" pluginCode="PIWG"
-              companyWebsite="www.fx-mechanics.com" version="0.0.1" pluginVST3Category="Fx,Tools">
+              companyName="FX-Mechanics" pluginManufacturerCode="FXME" pluginCode="PIWG"
+              companyWebsite="fx-mechanics.com" version="0.0.2" pluginVST3Category="Fx,Tools">
   <MAINGROUP id="M5INln" name="PiWheeG">
     <GROUP id="{9E0317C4-52A9-41BA-A088-827ADB8A1B37}" name="Assets">
       <FILE id="BEovjW" name="logo.png" compile="0" resource="1" file="Source/Assets/logo.png"/>
@@ -57,7 +57,7 @@
         <MODULEPATH id="juce_gui_extra" path="../../JUCE/JUCE/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <VS2022 targetFolder="Builds/VisualStudio2022" IPP1ALibrary="true" MKL1ALibrary="Sequential">
+    <VS2022 targetFolder="Builds/VisualStudio2022" IPP1ALibrary="true" MKL1ALibrary="Parallel">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="0" name="Release" targetName="PiWheeG"/>
       </CONFIGURATIONS>

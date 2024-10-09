@@ -17,7 +17,7 @@ class PBProcessor
 {
 public:
 
-  int currentValue;
+  int currentValue{0};
 
   juce::MidiBuffer processedBuffer;
 
