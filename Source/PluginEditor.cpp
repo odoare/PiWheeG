@@ -39,6 +39,9 @@ PitchBendGateAudioProcessorEditor::PitchBendGateAudioProcessorEditor (PitchBendG
   gatePositiveValueLabel.setJustificationType(juce::Justification::centred);
   gatePositiveValueLabel.attachToComponent(&gatePositiveValue,false);
 
+  addAndMakeVisible(pitchValue);
+  pitchValue.setJustificationType(juce::Justification::centred);
+
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
   setSize (400, 200);
@@ -84,6 +87,9 @@ void PitchBendGateAudioProcessorEditor::paint (juce::Graphics& g)
     g.setFont(14);
     g.drawMultiLineText("Usage: All pitchbend values the range defined by the left and right sliders are converted to the neutral value of 8192. Other values are remapped to fit in the range [0-16383]",
                           uxb+0.3*ux, uyb+2*uy, 3.5*ux, juce::Justification::horizontallyJustified);
+
+    pitchValue.setText(juce::String(audioProcessor.pitchBendProcessor.currentValue), juce::NotificationType::dontSendNotification);
+    pitchValue.repaint();
 }
 
 void PitchBendGateAudioProcessorEditor::resized()
@@ -96,5 +102,7 @@ void PitchBendGateAudioProcessorEditor::resized()
     
     gateNegativeValue.setBounds(uxb,uyb+0.5*uy,4*ux,uy);
     gatePositiveValue.setBounds(uxb+4*ux,uyb+0.5*uy,4*ux,uy);
+    pitchValue.setBounds(uxb+2*ux,uyb+0.8*uy,4*ux,uy);
+
 
 }

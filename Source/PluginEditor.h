@@ -37,6 +37,8 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gateNegativeValueAttachment;
     juce::Label gateNegativeValueLabel{"gateNegativeValueLabel", "Gate negative value"};
 
+    juce::Label pitchValue{"pitchValue", "pitchValue"};
+
     juce::Image logo;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PitchBendGateAudioProcessorEditor)
